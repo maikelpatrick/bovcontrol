@@ -1,0 +1,256 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API BOVCONTROL",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "paths": {
+    "/fazendeiro": {
+      "get": {
+        "tags": ["Cadastro Fazendeiro"],
+        "responses": {}
+      },
+      "post": {
+        "tags": ["Cadastro Fazendeiro"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "String"
+                  },
+                  "cpf": {
+                    "type": "String"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cadastro realizado"
+          },
+          "404": {
+            "description": "Cadastro não realizado"
+          }
+        }
+      }
+    },
+    "/fazenda": {
+      "get": {
+        "tags": ["Cadastro Fazenda"],
+        "responses": {}
+      },
+      "post": {
+        "tags": ["Cadastro Fazenda"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "String"
+                  },
+                  "cnpj": {
+                    "type": "String"
+                  },
+                  "kmDistancia": {
+                    "type": "Number"
+                  },
+                  "fazendeiro": {
+                    "type": "Number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cadastro realizado"
+          },
+          "404": {
+            "description": "Cadastro não realizado"
+          }
+        }
+      }
+    },
+    "/leite": {
+      "get": {
+        "tags": ["Cadastro Produção Leite Diário"],
+        "responses": {}
+      },
+      "post": {
+        "tags": ["Cadastro Produção Leite Diário"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "qtdLeite": {
+                    "type": "Number"
+                  },
+                  "fazenda": {
+                    "type": "Number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cadastro não realizado"
+          }
+        }
+      }
+    },
+
+    "/leitePreco": {
+      "get": {
+        "tags": ["Cadastro Preço Leite Base"],
+        "responses": {}
+      },
+      "post": {
+        "tags": ["Cadastro Preço Leite Base"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "precoBase": {
+                    "type": "Number"
+                  },
+                  "semestre": {
+                    "type": "Number"
+                  },
+                  "ano": {
+                    "type": "Number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cadastro realizado"
+          },
+          "404": {
+            "description": "Cadastro não realizado"
+          }
+        }
+      }
+    },
+    "/consultaVolDiario/{id}/{mes}": {
+      "get": {
+        "description": "ID da Fazenda, Mês [1 a 12]",
+        "tags": ["Consulta Volume Leite Diário"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+
+            "schema": {
+              "type": "Number"
+            }
+          },
+          {
+            "in": "path",
+            "name": "mes",
+
+            "schema": {
+              "type": "Number"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/consultaVolMensal/{id}/{mes}": {
+      "get": {
+        "description": "ID da Fazenda, Mês [1 a 12]",
+        "tags": ["Consulta Volume Leite Mensal"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+
+            "schema": {
+              "type": "Number"
+            }
+          },
+          {
+            "in": "path",
+            "name": "mes",
+
+            "schema": {
+              "type": "Number"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/consultaPrecoMensal/{id}/{mes}": {
+      "get": {
+        "description": "ID da Fazenda, Mês [1 a 12]",
+        "tags": ["Consulta Preço Litro Leite - Mês"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+
+            "schema": {
+              "type": "Number"
+            }
+          },
+          {
+            "in": "path",
+            "name": "mes",
+
+            "schema": {
+              "type": "Number"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/consultaPrecoAnual/{id}/{ano}": {
+      "get": {
+        "description": "ID da Fazenda, Ano [XXXX]",
+        "tags": ["Consulta Preço Litro Leite - Anual"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+
+            "schema": {
+              "type": "Number"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ano",
+
+            "schema": {
+              "type": "Number"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}
